@@ -103,3 +103,17 @@ window.onbeforeunload = () => {
   getStorageData();
   displayBooks();
 };
+
+// Website Navigation
+
+const list = document.querySelector('.list');
+const addNew = document.querySelector('.add-new');
+const contact = document.querySelector('.contact');
+
+const listActive = () => {
+  list.classList.add('active-link');
+  addNew.classList.remove('active-link');
+  contact.classList.remove('active-link');
+};
+
+window.onload = listActive();
