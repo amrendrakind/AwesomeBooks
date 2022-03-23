@@ -116,4 +116,20 @@ const listActive = () => {
   contact.classList.remove('active-link');
 };
 
+const addNewActive = () => {
+  addNew.classList.add('active-link');
+  list.classList.remove('active-link');
+  contact.classList.remove('active-link');
+};
+
+const contactActive = () => {
+  contact.classList.add('active-link');
+  list.classList.remove('active-link');
+  addNew.classList.remove('active-link');
+};
+
+list.addEventListener('click', listActive);
+addNew.addEventListener('click', addNewActive);
+contact.addEventListener('click', contactActive);
+
 window.onload = listActive();

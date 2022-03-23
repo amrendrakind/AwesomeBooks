@@ -97,4 +97,5 @@ nav ul li:last-child {
 
 .active-link {
   color: blue;
+  font-weight: bold;
 }
