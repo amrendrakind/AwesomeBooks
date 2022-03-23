@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 class Library {
   constructor(Title, Author, ID) {
     this.title = Title;
@@ -42,17 +43,16 @@ window.onload = getStorageData();
 const displayBooks = () => {
   const booksList = document.querySelector('.books');
   booksList.innerHTML = '';
+  let i = 0;
   library.awesomeBooks.forEach((book) => {
+    i++;
     const bookElement = document.createElement('div');
     bookElement.classList.add('book');
-
+    if (i % 2 !== 0) {
+      bookElement.classList.add('odd-color');
+    }
     const headTitle = document.createElement('h2');
-    headTitle.classList.add('title');
-    headTitle.textContent = book.title;
-
-    const headAuthor = document.createElement('h2');
-    headAuthor.classList.add('author');
-    headAuthor.textContent = book.author;
+    headTitle.textContent = `"${book.title}" by ${book.author}`;
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
@@ -62,7 +62,6 @@ const displayBooks = () => {
       displayBooks();
     });
     bookElement.appendChild(headTitle);
-    bookElement.appendChild(headAuthor);
     bookElement.appendChild(removeBtn);
     booksList.appendChild(bookElement);
     const hr = document.createElement('hr');
@@ -84,13 +83,19 @@ const author = form.querySelector('#author');
 
 const addBtn = document.querySelector('#add-btn');
 addBtn.addEventListener('click', (event) => {
-  event.preventDefault();
-  const bookTitle = title.value;
-  const bookAuthor = author.value;
-  const bookID = generateBookID();
-  library.addBook(bookTitle, bookAuthor, bookID);
-  displayBooks();
-  saveBooks();
+  if (author.value && title.value) {
+    event.preventDefault();
+    const bookTitle = title.value;
+    const bookAuthor = author.value;
+    const bookID = generateBookID();
+    library.addBook(bookTitle, bookAuthor, bookID);
+    displayBooks();
+    saveBooks();
+    title.value = null;
+    author.value = null;
+  } else {
+    event.preventDefault();
+  }
 });
 
 getStorageData();
