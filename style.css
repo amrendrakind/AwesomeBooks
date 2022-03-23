@@ -13,7 +13,7 @@ body {
 nav {
   height: auto;
   padding-left: 15px;
-  width: 100%;
+  width: auto;
   display: flex;
   justify-content: space-between;
   border: 3px solid black;
@@ -41,4 +41,56 @@ nav ul li:hover {
 
 nav ul li:last-child {
   padding-right: 15px;
+}
+
+.book {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.book h2 {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.books {
+  width: 50%;
+  margin: auto;
+  border: 3px solid black;
+}
+
+.book button {
+  height: 30px;
+  padding: 0 10px;
+}
+
+.book button:hover {
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(44, 30, 107, 0.2);
+}
+
+.odd-color {
+  background-color: rgb(201, 202, 207);
+  font-weight: bold;
+}
+
+.add-book {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.add-book input {
+  width: 50%;
+  height: 28px;
+  padding-left: 8px;
+}
+
+.add-btn {
+  margin-left: auto;
+  margin-right: 24.5%;
 }
