@@ -64,8 +64,6 @@ const displayBooks = () => {
     bookElement.appendChild(headTitle);
     bookElement.appendChild(removeBtn);
     booksList.appendChild(bookElement);
-    const hr = document.createElement('hr');
-    booksList.appendChild(hr);
   });
   saveBooks();
 };
