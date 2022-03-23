@@ -1,33 +1,37 @@
-let awesomeBooks = [];
+class Library {
+  constructor(Title, Author, ID) {
+    this.title = Title;
+    this.author = Author;
+    this.id = ID;
+  }
 
-const generateBookID = () => {
-  const id = Math.random().toString();
-  return id;
-};
-
-const addBooks = (title, author) => {
-  const awesomeBook = {
-    title,
-    author,
-    id: generateBookID(),
+  addBook = (bookTitle, bookAuthor, bookID) => {
+    const awesomeBook = {
+      title: bookTitle,
+      author: bookAuthor,
+      id: bookID,
+    };
+    this.awesomeBooks.push(awesomeBook);
   };
-  awesomeBooks.push(awesomeBook);
-};
+
+  removeBook = (id) => {
+    this.awesomeBooks = this.awesomeBooks.filter((book) => book.id !== id);
+  };
+}
+
+const library = new Library();
+library.awesomeBooks = [];
 
 const saveBooks = () => {
-  localStorage.setItem('myAwesomeBooks', JSON.stringify(awesomeBooks));
-};
-
-const removeBook = (id) => {
-  awesomeBooks = awesomeBooks.filter((book) => book.id !== id);
+  localStorage.setItem('myAwesomeBooks', JSON.stringify(library.awesomeBooks));
 };
 
 const getStorageData = () => {
   const localFormData = JSON.parse(localStorage.getItem('myAwesomeBooks'));
   if (localFormData == null) {
-    awesomeBooks = [];
+    library.awesomeBooks = [];
   } else {
-    awesomeBooks = localFormData;
+    library.awesomeBooks = localFormData;
   }
 };
 
@@ -38,7 +42,7 @@ window.onload = getStorageData();
 const displayBooks = () => {
   const booksList = document.querySelector('.books');
   booksList.innerHTML = '';
-  awesomeBooks.forEach((book) => {
+  library.awesomeBooks.forEach((book) => {
     const bookElement = document.createElement('div');
     bookElement.classList.add('book');
 
@@ -54,7 +58,7 @@ const displayBooks = () => {
     removeBtn.textContent = 'Remove';
 
     removeBtn.addEventListener('click', () => {
-      removeBook(book.id);
+      library.removeBook(book.id);
       displayBooks();
     });
     bookElement.appendChild(headTitle);
@@ -65,6 +69,11 @@ const displayBooks = () => {
     booksList.appendChild(hr);
   });
   saveBooks();
+};
+
+const generateBookID = () => {
+  const id = Math.random().toString();
+  return id;
 };
 
 // Get Form Data from Local Storage
@@ -78,7 +87,8 @@ addBtn.addEventListener('click', (event) => {
   event.preventDefault();
   const bookTitle = title.value;
   const bookAuthor = author.value;
-  addBooks(bookTitle, bookAuthor);
+  const bookID = generateBookID();
+  library.addBook(bookTitle, bookAuthor, bookID);
   displayBooks();
   saveBooks();
 });
