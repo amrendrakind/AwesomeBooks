@@ -32,6 +32,7 @@ nav ul {
 
 nav ul li {
   padding-right: 10px;
+  border-right: 3px solid black;
 }
 
 nav ul li:hover {
@@ -41,6 +42,7 @@ nav ul li:hover {
 
 nav ul li:last-child {
   padding-right: 15px;
+  border-right: none;
 }
 
 .date-time {
