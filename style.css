@@ -43,6 +43,10 @@ nav ul li:last-child {
   padding-right: 15px;
 }
 
+.books-self {
+  margin-top: 5vh;
+}
+
 .book {
   text-align: left;
   display: flex;
@@ -78,6 +82,7 @@ nav ul li:last-child {
 }
 
 .add-book {
+  margin-top: 5vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -98,4 +103,22 @@ nav ul li:last-child {
 .active-link {
   color: blue;
   font-weight: bold;
+}
+
+.display {
+  display: flex;
+}
+
+.contact-info {
+  margin-top: 20vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info ul {
+  list-style: none;
+}
+
+.hide {
+  display: none;
 }
