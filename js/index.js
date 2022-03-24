@@ -37,7 +37,8 @@ const getStorageData = () => {
 };
 
 window.onload = getStorageData();
-
+const dt = new Date();
+document.getElementById('date-time').innerHTML = dt;
 // Display Books Data
 
 const displayBooks = () => {

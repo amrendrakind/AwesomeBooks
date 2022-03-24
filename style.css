@@ -43,6 +43,13 @@ nav ul li:last-child {
   padding-right: 15px;
 }
 
+.date-time {
+  font-size: 15px;
+  text-align: end;
+  padding-right: 5px;
+  margin-bottom: 20px;
+}
+
 .books-self {
   margin-top: 5vh;
 }
@@ -103,10 +110,6 @@ nav ul li:last-child {
 .active-link {
   color: blue;
   font-weight: bold;
-}
-
-.display {
-  display: flex;
 }
 
 .contact-info {
